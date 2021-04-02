@@ -16,10 +16,25 @@ class MemeGenerator extends Component {
   componentDidMount() {
     fetch("https://api.imgflip.com/get_memes")
       .then((response) => response.json())
-      .then((memes) => this.setState({ allMemeImgs: memes }));
+      .then((response) => {
+        const { memes } = response.data;
+        console.log(memes[0]);
+        this.setState({ allMemeImgs: memes });
+      });
   }
+
   render() {
-    return <h1>MEME GENERATOR SECTION</h1>;
+    return (
+      <div>
+        <form action="" className="meme-form">
+          {
+            // <input type="text" name="topText"/>
+            // <input type="text" name="bottomText"/>
+          }
+          <button>Gen</button>
+        </form>
+      </div>
+    );
   }
 }
 
